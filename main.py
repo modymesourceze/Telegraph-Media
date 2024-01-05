@@ -48,10 +48,9 @@ async def start(client, message):
                                       InlineKeyboardButton(
                                             "♆ الدعم ♆", url="https://t.me/ZeSupport")
                                     ]]
-                            ),        
-                   ),
-    await teletips.send_message(message.chat.id, text, disable_web_page_preview=True)
-    
+                            ),       
+          disable_web_page_preview=True, 
+                      parse_mode="html")
 
 @teletips.on_message(filters.media & filters.private)
 async def get_link_private(client, message):
