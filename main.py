@@ -25,7 +25,10 @@ teletips = Client("MediaToTelegraphLink",
 
 @teletips.on_message(filters.command('start') & filters.private)
 async def start(client, message):
-    text = f"""
+   if message.chat.type == 'private':
+       await sbot.send_message(
+               chat_id=message.chat.id,
+               text = f"""
 اهلا {message.from_user.mention},
 🔮أنا هنا لإنشاء روابط التلجراف لملفات الوسائط الخاصة بك.
 
