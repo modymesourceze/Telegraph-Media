@@ -25,10 +25,7 @@ teletips = Client("MediaToTelegraphLink",
 
 @teletips.on_message(filters.command('start') & filters.private)
 async def start(client, message):
-   if message.chat.type == 'private':
-       await sbot.send_message(
-               chat_id=message.chat.id,
-               text = f"""
+    text = f"""
 اهلا {message.from_user.mention},
 🔮أنا هنا لإنشاء روابط التلجراف لملفات الوسائط الخاصة بك.
 
@@ -38,19 +35,10 @@ async def start(client, message):
 🌐لأنشاء الروابط في المجموعات,اضفني لمجموعه خارقه اي عامه وارسل الامر <code>/tl</code> ردا علي ملف وسائط صالح.
 🖥 | [🔱 𝐒𝐎𝐔𝐑𝐂𝐄 𝐙𝐄 🔱](https://t.me/Source_Ze)
 
-☣️ | [⧛ 𓆩 𝑴𝒐𝒅𝒚 ➫ ⁽𝑆₎𝑻𝒆𝒂𝒎 ࿐ 𝑫 𝒆 𝒗 𝒊 𝒍 𓆪 ⧚](https://t.me/ELHYBA)""",
-                            reply_markup=InlineKeyboardMarkup(
-                                [[
-                               
-                                        InlineKeyboardButton(
-                                            "♆ قناة التحديثات ♆", url="https://t.me/Source_Ze")
-                                    ],[
-                                      InlineKeyboardButton(
-                                            "♆ الدعم ♆", url="https://t.me/ZeSupport")
-                                    ]]
-                            ),       
-          disable_web_page_preview=True, 
-                      parse_mode="html")
+☣️ | [⧛ 𓆩 𝑴𝒐𝒅𝒚 ➫ ⁽𝑆₎𝑻𝒆𝒂𝒎 ࿐ 𝑫 𝒆 𝒗 𝒊 𝒍 𓆪 ⧚](https://t.me/ELHYBA)
+            """
+    await teletips.send_message(message.chat.id, text, disable_web_page_preview=True)
+    
 
 @teletips.on_message(filters.media & filters.private)
 async def get_link_private(client, message):
